@@ -48,12 +48,12 @@ async function runIntro() {
 
 function burstGiftPhotos() {
   const imgs = [
-    "img/hue10.jpg",
-    "img/hue11.jpg",
-    "img/hue12.jpg",
-    "img/hue4.jpg",
-    "img/hue14.jpg",
+    "img/hue25.jpg",
+    "img/hue24.jpg",
+    "img/hue21.jpg",
     "img/hue6.jpg",
+    "img/hue23.jpg",
+    "img/hue1.jpg",
   ];
   imgs.forEach((src, i) => {
     const card = document.createElement("div");
@@ -79,24 +79,24 @@ function openGift() {
 
 const memories = [
   {
-    img: "img/hue10.jpg",
+    img: "img/hue25.jpg",
     text: "Một khoảnh khắc rất bình thường, nhưng lại đáng nhớ",
   },
   {
-    img: "img/hue11.jpg",
+    img: "img/hue24.jpg",
     text: "Có những điều chỉ cần nhìn thôi cũng thấy nhẹ lòng",
   },
-  { img: "img/hue12.jpg", text: "Cậu của ngày hôm nay vẫn rất xinh đẹp" },
+  { img: "img/hue21.jpg", text: "Cậu của ngày hôm nay vẫn rất xinh đẹp" },
   {
-    img: "img/hue4.jpg",
+    img: "img/hue6.jpg",
     text: "Mỗi tấm ảnh là một chút dịu dàng được giữ lại",
   },
   {
-    img: "img/hue14.jpg",
+    img: "img/hue23.jpg",
     text: "Có những nụ cười làm ngày bình thường trở nên khác hơn",
   },
   {
-    img: "img/hue6.jpg",
+    img: "img/hue1.jpg",
     text: "Mong cậu luôn được yêu thương theo cách thật nhẹ nhàng",
   },
 ];
@@ -142,6 +142,14 @@ const photoList = [
   "img/hue17.jpg",
   "img/hue18.jpg",
   "img/hue19.jpg",
+  "img/hue20.jpg",
+  "img/hue21.jpg",
+  "img/hue22.jpg",
+  "img/hue23.jpg",
+  "img/hue24.jpg",
+  "img/hue25.jpg",
+  "img/hue26.jpg",
+  "img/hue27.jpg",
 ];
 let photoIndex = 0;
 function startSlideShow() {
@@ -273,6 +281,14 @@ const skyPhotoList = [
   "img/hue17.jpg",
   "img/hue18.jpg",
   "img/hue19.jpg",
+  "img/hue20.jpg",
+  "img/hue21.jpg",
+  "img/hue22.jpg",
+  "img/hue23.jpg",
+  "img/hue24.jpg",
+  "img/hue25.jpg",
+  "img/hue26.jpg",
+  "img/hue27.jpg",
 ];
 let endingScenePlayed = false;
 
