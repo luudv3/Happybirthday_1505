@@ -398,3 +398,14 @@ function restartStory() {
   runIntro();
 }
 runIntro();
+const wishInputZoomFix = document.getElementById("wishInput");
+
+if (wishInputZoomFix) {
+  wishInputZoomFix.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      wishInputZoomFix.blur();
+      sendWish();
+    }
+  });
+}
