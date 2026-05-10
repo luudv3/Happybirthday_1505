@@ -70,11 +70,86 @@ function burstGiftPhotos() {
 
 function openGift() {
   const gift = document.getElementById("gift");
-  burstGiftPhotos();
-  gift.classList.add("explode");
+  const page2 = document.getElementById("page2");
+  const pageMemory = document.getElementById("pageMemory");
+  const ting = document.getElementById("giftTing");
+
+  if (!gift || !page2 || !pageMemory) return;
+
+  // Tránh bấm nhiều lần
+  if (gift.classList.contains("gift-opening")) return;
+
+  // Âm thanh ting
+  if (ting) {
+    ting.currentTime = 0;
+    ting.play().catch(() => {});
+  }
+
+  // Hộp quà rung mạnh rồi mở
+  gift.classList.add("gift-opening");
+
+  // Tim + confetti bung từ vị trí hộp quà
+  burstGiftParticles(gift);
+
+  // Tạo lớp phủ chuyển trang
+  const transition = document.createElement("div");
+  transition.className = "love-transition";
+  transition.innerHTML = `
+    <div class="transition-heart"></div>
+    <div class="transition-cloud c1"></div>
+    <div class="transition-cloud c2"></div>
+    <div class="transition-cloud c3"></div>
+  `;
+  document.body.appendChild(transition);
+
+  requestAnimationFrame(() => {
+    transition.classList.add("show");
+  });
+
+  // Đợi hiệu ứng chạy rồi chuyển sang bầu trời ký ức
   setTimeout(() => {
-    showPage("pageMemory");
-  }, 650);
+    page2.classList.remove("active");
+    pageMemory.classList.add("active");
+  }, 720);
+
+  // Xoá lớp phủ sau khi xong
+  setTimeout(() => {
+    transition.remove();
+    gift.classList.remove("gift-opening");
+  }, 1750);
+}
+function burstGiftParticles(gift) {
+  const rect = gift.getBoundingClientRect();
+  const startX = rect.left + rect.width / 2;
+  const startY = rect.top + rect.height / 2;
+
+  const icons = ["💗", "💕", "💖", "✨", "🌸", "🎀", "🫧", "💫"];
+  const count = window.innerWidth <= 430 ? 22 : 36;
+
+  for (let i = 0; i < count; i++) {
+    const particle = document.createElement("span");
+    particle.className = "gift-particle";
+    particle.textContent = icons[Math.floor(Math.random() * icons.length)];
+
+    const angle = Math.random() * Math.PI * 2;
+    const distance = 70 + Math.random() * 150;
+
+    const x = Math.cos(angle) * distance;
+    const y = Math.sin(angle) * distance - Math.random() * 70;
+
+    particle.style.left = `${startX}px`;
+    particle.style.top = `${startY}px`;
+    particle.style.setProperty("--x", `${x}px`);
+    particle.style.setProperty("--y", `${y}px`);
+    particle.style.setProperty("--r", `${Math.random() * 360 - 180}deg`);
+    particle.style.setProperty("--s", `${0.65 + Math.random() * 0.65}`);
+
+    document.body.appendChild(particle);
+
+    setTimeout(() => {
+      particle.remove();
+    }, 1000);
+  }
 }
 
 const memories = [
